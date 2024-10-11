@@ -1,3 +1,4 @@
+export * from './addTaskButton';
 export * from './modeToggle';
 export * from './taskAccordion';
 export * from './taskTable';

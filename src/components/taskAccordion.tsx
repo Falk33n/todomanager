@@ -4,6 +4,7 @@ import {
   AccordionItem,
   AccordionTrigger,
   Badge,
+  TaskProps,
   TaskTable,
   type TaskTableProps,
 } from '@/components';
@@ -21,6 +22,46 @@ export const TaskAccordion = ({
   type,
   className,
 }: TaskAccordionProps) => {
+  const tasks: TaskProps =
+    type === 'active'
+      ? [
+          {
+            title:
+              'Active Active Active Active Active Active Active Active Active Active Active Active Active Active Active Active Active Active Active Active ',
+            status: 'in-progress',
+            urgency: 'important',
+          },
+        ]
+      : type === 'inactive'
+      ? [
+          {
+            title: 'Inactive',
+            status: 'completed',
+            urgency: 'normal',
+            dueDate: '2024-10-10',
+          },
+        ]
+      : [
+          {
+            title: 'Completed',
+            status: 'scheduled',
+            urgency: 'low',
+            dueDate: '2024-11-01',
+          },
+          {
+            title: 'Completed',
+            status: 'scheduled',
+            urgency: 'low',
+            dueDate: '2024-11-01',
+          },
+          {
+            title: 'Completed',
+            status: 'scheduled',
+            urgency: 'low',
+            dueDate: '2024-11-01',
+          },
+        ];
+
   return (
     <Accordion
       type='single'
@@ -33,14 +74,17 @@ export const TaskAccordion = ({
             {label}
             <Badge
               variant='secondary'
-              className='ml-4 p-1.5 rounded-full'
+              className='ml-4 px-2 py-1 rounded-full'
             >
-              13
+              <span aria-label={`The total amount of ${type} tasks is ${tasks.length ?? '0'}`} >{tasks.length ?? '0'}</span>
             </Badge>
           </span>
         </AccordionTrigger>
         <AccordionContent>
-          <TaskTable type={type} />
+          <TaskTable
+            tasks={tasks}
+            type={type}
+          />
         </AccordionContent>
       </AccordionItem>
     </Accordion>
