@@ -1,3 +1,4 @@
+import { ThemeProvider } from '@/components';
 import type { Metadata } from 'next';
 import { Roboto_Condensed } from 'next/font/google';
 import './globals.scss';
@@ -5,6 +6,7 @@ import './globals.scss';
 const robotoCondensed = Roboto_Condensed({
   weight: ['300', '400', '500', '700', '800'],
   fallback: ['sans-serif'],
+  subsets: ['latin'],
 });
 
 export const metadata: Metadata = {
@@ -18,11 +20,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en'>
+    <html
+      lang='en'
+      suppressHydrationWarning
+    >
       <body
         className={`${robotoCondensed.className} antialiased w-full min-h-screen`}
       >
-        {children && children}
+        <ThemeProvider
+          attribute='class'
+          defaultTheme='system'
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children && children}
+        </ThemeProvider>
       </body>
     </html>
   );
