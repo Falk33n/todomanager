@@ -29,7 +29,7 @@ export const TaskAccordion = ({
             title:
               'Active Active Active Active Active Active Active Active Active Active Active Active Active Active Active Active Active Active Active Active ',
             status: 'in-progress',
-            urgency: 'important',
+            urgency: 'high',
           },
         ]
       : type === 'inactive'
@@ -76,7 +76,13 @@ export const TaskAccordion = ({
               variant='secondary'
               className='ml-4 px-2 py-1 rounded-full'
             >
-              <span aria-label={`The total amount of ${type} tasks is ${tasks.length ?? '0'}`} >{tasks.length ?? '0'}</span>
+              <span
+                aria-label={`The total amount of ${type} tasks is ${
+                  tasks.length ?? '0'
+                }`}
+              >
+                {tasks.length ?? '0'}
+              </span>
             </Badge>
           </span>
         </AccordionTrigger>

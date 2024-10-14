@@ -1,4 +1,4 @@
-import { ThemeProvider } from '@/components';
+import { AddTaskDialog, ThemeProvider } from '@/components';
 import type { Metadata } from 'next';
 import { Roboto_Condensed } from 'next/font/google';
 import './globals.scss';
@@ -27,6 +27,9 @@ export default function RootLayout({
       <body
         className={`${robotoCondensed.className} antialiased w-full min-h-screen`}
       >
+        <nav className='p-4 w-full'>
+          <AddTaskDialog />
+        </nav>
         <ThemeProvider
           attribute='class'
           defaultTheme='system'

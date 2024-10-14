@@ -12,7 +12,7 @@ import { cn } from '@/lib';
 export type TaskProps = {
   title: string;
   status: 'in-progress' | 'completed' | 'scheduled';
-  urgency: 'important' | 'normal' | 'low';
+  urgency: 'high' | 'normal' | 'low';
   dueDate?: string;
 }[];
 

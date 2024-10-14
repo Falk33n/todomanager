@@ -1,17 +1,8 @@
-import { Button, ModeToggle, TaskAccordion } from '@/components';
-import { Plus } from 'lucide-react';
+import { ModeToggle, TaskAccordion } from '@/components';
 
 export default function Home() {
   return (
     <main className='px-4 w-full'>
-      <ModeToggle />
-      <Button aria-label='Add new task' className='gap-2'>
-        Add new
-        <Plus
-          aria-hidden
-          className='size-4'
-        />
-      </Button>
       <div className='border-t'>
         <TaskAccordion
           label='Active Tasks'
@@ -28,6 +19,9 @@ export default function Home() {
           id='completedTasks'
           type='completed'
         />
+      </div>
+      <div className='mt-40'>
+        <ModeToggle />
       </div>
     </main>
   );
