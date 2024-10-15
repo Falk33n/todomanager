@@ -31,7 +31,7 @@ export const DatePicker = <TFieldValues extends FieldValues>({
           >
             <CalendarIcon className='opacity-50 size-4' />
             {field.value ? (
-              format(field.value, 'PPP')
+              format(field.value, 'yyyy-MM-dd')
             ) : (
               <span>Pick a date</span>
             )}

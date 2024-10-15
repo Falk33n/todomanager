@@ -14,7 +14,9 @@ import {
   Input,
   UrgencySelector,
 } from '@/components';
+import { toast } from '@/hooks';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { format } from 'date-fns';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
@@ -25,7 +27,7 @@ const FormSchema = z.object({
   urgency: z.string({
     required_error: 'Please select an urgency level.',
   }),
-  due: z.date({
+  dueDate: z.date({
     required_error: 'Please pick a due date.',
   }),
 });
@@ -36,18 +38,32 @@ export const AddTaskForm = () => {
     defaultValues: {
       title: '',
       urgency: '',
-      due: new Date(),
+      dueDate: new Date(),
     },
   });
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
+    const formattedTasks = {
+      ...data,
+      dueDate: format(data.dueDate, 'yyyy-MM-dd'),
+      status: 'active',
+    };
     const activeTasks = localStorage.getItem('activeTasks');
+
     if (activeTasks) {
-      const combinedTasks = Object.assign(activeTasks, data);
+      const parsedTasks = JSON.parse(activeTasks);
+      const combinedTasks = [...parsedTasks, formattedTasks];
       localStorage.setItem('activeTasks', JSON.stringify(combinedTasks));
     } else {
-      localStorage.setItem('activeTasks', JSON.stringify(data));
+      localStorage.setItem('activeTasks', JSON.stringify([formattedTasks]));
     }
+
+    form.reset();
+    toast({
+      title: 'Success!',
+      variant: 'success',
+      description: 'Added the new task successfully.',
+    });
   }
 
   return (
@@ -96,7 +112,7 @@ export const AddTaskForm = () => {
         />
         <FormField
           control={form.control}
-          name='due'
+          name='dueDate'
           render={({ field }) => (
             <FormItem className='flex flex-wrap items-center gap-x-4'>
               <FormLabel className='text-right w-[15%] md:w-[20%] whitespace-nowrap'>

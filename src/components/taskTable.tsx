@@ -11,9 +11,9 @@ import { cn } from '@/lib';
 
 export type TaskProps = {
   title: string;
-  status: 'in-progress' | 'completed' | 'scheduled';
+  status: 'active' | 'completed' | 'inactive';
   urgency: 'high' | 'normal' | 'low';
-  dueDate?: string;
+  dueDate: string;
 }[];
 
 export type TaskTableProps = {
@@ -29,8 +29,7 @@ export const TaskTable = ({ type, tasks }: TaskTableProps) => {
       </TableCaption>
       <TableHeader>
         <TableRow className={cn('hover:bg-muted/70')}>
-          <TableHead className='w-[80%] min-w-[200px]'>Title</TableHead>
-          <TableHead className='w-[7.5%] whitespace-nowrap'>Status</TableHead>
+          <TableHead className='w-[87.5%] min-w-[200px]'>Title</TableHead>
           <TableHead className='w-[7.5%] whitespace-nowrap'>Urgency</TableHead>
           <TableHead className='text-right w-[5%] whitespace-nowrap'>
             Due Date
@@ -43,17 +42,14 @@ export const TaskTable = ({ type, tasks }: TaskTableProps) => {
             key={i}
             className={cn('hover:bg-muted/70', i % 2 === 0 && 'bg-muted/35')}
           >
-            <TableCell className='w-[80%] min-w-[200px]'>
+            <TableCell className='w-[87.5%] min-w-[200px]'>
               {task.title}
-            </TableCell>
-            <TableCell className='w-[7.5%] capitalize whitespace-nowrap'>
-              {task.status}
             </TableCell>
             <TableCell className='w-[7.5%] capitalize whitespace-nowrap'>
               {task.urgency}
             </TableCell>
             <TableCell className='text-right w-[5%] whitespace-nowrap'>
-              {task.dueDate ?? <span aria-label='No due date'>---</span>}
+              {task.dueDate}
             </TableCell>
           </TableRow>
         ))}
