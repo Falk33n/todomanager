@@ -1,4 +1,4 @@
-import { ThemeProvider } from '@/components';
+import { ThemeProvider, Toaster } from '@/components';
 import type { Metadata } from 'next';
 import { Roboto_Condensed } from 'next/font/google';
 import './globals.scss';
@@ -34,6 +34,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children && children}
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>
