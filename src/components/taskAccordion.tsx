@@ -54,12 +54,10 @@ export const TaskAccordion = ({
 
   return (
     <Accordion
-      defaultValue={
-        tasks.length === 0 ? undefined : type === 'active' ? id : undefined
-      }
+      defaultValue={type === 'active' ? id : undefined}
       type='single'
       collapsible
-      className={cn('w-full', className)}
+      className={cn('w-full border-t', className)}
     >
       <AccordionItem value={id}>
         <AccordionTrigger
@@ -86,12 +84,14 @@ export const TaskAccordion = ({
             )}
           </span>
         </AccordionTrigger>
-        <AccordionContent>
-          <TaskTable
-            tasks={tasks}
-            type={type}
-          />
-        </AccordionContent>
+        {!isLoading && (
+          <AccordionContent>
+            <TaskTable
+              tasks={tasks}
+              type={type}
+            />
+          </AccordionContent>
+        )}
       </AccordionItem>
     </Accordion>
   );
