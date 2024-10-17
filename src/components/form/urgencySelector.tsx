@@ -35,7 +35,7 @@ export const UrgencySelector = <TFieldValues extends FieldValues>({
       </FormControl>
       <SelectContent>
         <SelectItem value='high'>High</SelectItem>
-        <SelectItem value='normal'>Normal</SelectItem>
+        <SelectItem value='medium'>Medium</SelectItem>
         <SelectItem value='low'>Low</SelectItem>
       </SelectContent>
     </Select>

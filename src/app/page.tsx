@@ -1,12 +1,12 @@
-import { AddTaskDialog, ModeToggle, TaskAccordion } from '@/components';
+import { AddTaskDialog, TaskAccordion } from '@/components';
 
 export default function Home() {
   return (
-    <main className='px-4 w-full'>
-      <div className='py-4'>
-        <AddTaskDialog />
-      </div>
-      <div className='flex flex-col gap-y-16 mx-auto w-[80%]'>
+    <main className='mx-auto px-4 py-20 w-[80%]'>
+      <div className='flex flex-col gap-1'>
+        <div className='py-2'>
+          <AddTaskDialog />
+        </div>
         <TaskAccordion
           label='Active Tasks'
           id='activeTasks'
@@ -22,9 +22,6 @@ export default function Home() {
           id='completedTasks'
           type='completed'
         />
-      </div>
-      <div className='mt-40'>
-        <ModeToggle />
       </div>
     </main>
   );

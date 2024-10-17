@@ -1,6 +1,7 @@
-import { ThemeProvider, Toaster } from '@/components';
+import { ModeToggle, ThemeProvider, Toaster } from '@/components';
 import type { Metadata } from 'next';
 import { Roboto_Condensed } from 'next/font/google';
+import React from 'react';
 import './globals.scss';
 
 const robotoCondensed = Roboto_Condensed({
@@ -14,11 +15,11 @@ export const metadata: Metadata = {
   description: 'A Todo Manager App to help you get more organized.',
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
+type RootLayoutProps = {
   children: React.ReactNode;
-}>) {
+};
+
+export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html
       lang='en'
@@ -33,7 +34,8 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children && children}
+          <ModeToggle />
+          {children}
           <Toaster />
         </ThemeProvider>
       </body>

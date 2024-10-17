@@ -15,7 +15,10 @@ export const ModeToggle = () => {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>
+      <DropdownMenuTrigger
+        className='top-7 left-7 fixed'
+        asChild
+      >
         <Button
           variant='outline'
           size='icon'

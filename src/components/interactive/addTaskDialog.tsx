@@ -15,14 +15,15 @@ export const AddTaskDialog = () => {
     <Dialog>
       <DialogTrigger asChild>
         <Button
+          size='sm'
           aria-label='Add a new task'
-          className='gap-2 rounded-xl'
+          className='gap-x-1 rounded-md'
         >
-          New task
           <Plus
             aria-hidden
             className='size-4'
           />
+          Add task
         </Button>
       </DialogTrigger>
       <DialogContent className='sm:max-w-[425px]'>

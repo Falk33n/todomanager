@@ -38,7 +38,7 @@ export const AddTaskForm = () => {
     defaultValues: {
       title: '',
       urgency: '',
-      dueDate: new Date(),
+      dueDate: undefined,
     },
   });
 
